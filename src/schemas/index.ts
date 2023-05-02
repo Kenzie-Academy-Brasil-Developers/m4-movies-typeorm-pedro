@@ -1,7 +1,7 @@
 import {
   moviesSchema,
-  moviesCreateRequest,
-  moviesUpdateRequest,
+  moviesCreateSchema,
+  moviesUpdateSchema,
 } from "./movies.schemas";
 
-export { moviesSchema, moviesCreateRequest, moviesUpdateRequest };
+export { moviesSchema, moviesCreateSchema, moviesUpdateSchema };

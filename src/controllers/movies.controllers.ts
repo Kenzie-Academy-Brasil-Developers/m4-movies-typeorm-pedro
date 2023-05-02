@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
+import moviesService from "../services/movies.service";
 
-const createMoviesController = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
+const create = async (req: Request, res: Response) => {
   const payload = req.body;
 
-  return res.json("deu bom");
+  const newMovie = await moviesService.create(payload);
+
+  return res.status(201).json(newMovie);
 };
 
-export { createMoviesController };
+export default { create };

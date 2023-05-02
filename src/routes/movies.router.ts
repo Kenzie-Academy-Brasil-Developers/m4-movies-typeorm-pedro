@@ -1,14 +1,29 @@
 import { Router } from "express";
-import { createMoviesController } from "../controllers/movies.controllers";
+
+import {
+  ensureMovieExistsMiddleware,
+  validateBodyMiddleware,
+} from "../middlewares";
+import { moviesCreateSchema, moviesUpdateSchema } from "../schemas";
+import { moviesControllers } from "../controllers";
 
 const moviesRouter: Router = Router();
 
-moviesRouter.post("", createMoviesController);
+moviesRouter.post(
+  "",
+  validateBodyMiddleware.body(moviesCreateSchema),
+  ensureMovieExistsMiddleware.verify,
+  moviesControllers.create
+);
 
 moviesRouter.get("");
 
-moviesRouter.patch("/:id");
+moviesRouter.patch(
+  "/:id",
+  ensureMovieExistsMiddleware.verify,
+  validateBodyMiddleware.body(moviesUpdateSchema)
+);
 
-moviesRouter.delete("/:id");
+moviesRouter.delete("/:id", ensureMovieExistsMiddleware.verify);
 
 export default moviesRouter;
