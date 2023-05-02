@@ -10,6 +10,6 @@ const moviesSchema = z.object({
 
 const moviesCreateSchema = moviesSchema.omit({ id: true });
 
-const moviesUpdateSchema = moviesSchema.omit({ id: true }).deepPartial();
+const moviesUpdateSchema = moviesSchema.omit({ id: true }).partial();
 
 export { moviesSchema, moviesCreateSchema, moviesUpdateSchema };

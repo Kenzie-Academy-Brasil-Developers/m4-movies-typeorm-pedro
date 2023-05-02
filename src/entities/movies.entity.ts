@@ -12,10 +12,10 @@ class Movie {
   description: string | null | undefined;
 
   @Column({ type: "integer" })
-  duration: string;
+  duration: number;
 
   @Column({ type: "integer" })
-  price: string;
+  price: number;
 }
 
 export default Movie;

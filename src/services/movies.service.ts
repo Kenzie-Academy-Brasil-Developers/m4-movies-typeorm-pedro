@@ -7,7 +7,7 @@ const create = async (payload: TMoviesCreate) => {
   const moviesRepository: TMoviesRepository =
     AppDataSource.getRepository(Movie);
 
-  const movie: Movie = moviesRepository.create();
+  const movie: Movie = moviesRepository.create(payload);
 
   await moviesRepository.save(movie);
 
