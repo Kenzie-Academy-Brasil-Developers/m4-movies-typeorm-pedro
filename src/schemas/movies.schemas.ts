@@ -8,8 +8,10 @@ const moviesSchema = z.object({
   price: z.number().int(),
 });
 
-const moviesCreateSchema = moviesSchema.omit({ id: true });
+const createMoviesSchema = moviesSchema.omit({ id: true });
 
-const moviesUpdateSchema = moviesSchema.omit({ id: true }).partial();
+const updateMoviesSchema = moviesSchema.omit({ id: true }).partial();
 
-export { moviesSchema, moviesCreateSchema, moviesUpdateSchema };
+const listMoviesSchema = moviesSchema.array();
+
+export { moviesSchema, createMoviesSchema, updateMoviesSchema };
